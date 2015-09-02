@@ -1,0 +1,97 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    xmlns:mm="http://millennialmedia.com/android/schema"
+    xmlns:ads="http://schemas.android.com/apk/res-auto"
+    android:id="@+id/RelativeLayout1"
+    android:fadingEdgeLength="5dp"
+ 	android:layout_width="fill_parent"
+    android:layout_height="fill_parent"
+    android:orientation="vertical"
+    tools:context=".SpeechRecognizerActivity">
+
+    <com.google.android.gms.ads.AdView
+        android:id="@+id/adView"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_alignParentTop="true"
+        android:layout_alignParentLeft="true"
+        android:background="#000"
+        ads:adSize="BANNER"
+        ads:adUnitId="ca-app-pub-5320504994228344/9803747465"/>
+
+    <ScrollView
+        android:id="@+id/scrollView"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_above="@+id/editView"
+        android:layout_below="@+id/adView" >
+
+	    <TextView
+	        android:id="@+id/textViewResult"
+	        android:layout_width="match_parent"
+	        android:layout_height="wrap_content"
+	        android:overScrollMode="ifContentScrolls"
+	        android:paddingLeft="10dp"
+	        android:paddingRight="10dp"
+	        android:paddingTop="10dp"
+	        android:paddingBottom="10dp"
+	        android:scrollbarAlwaysDrawVerticalTrack="true"
+	        android:scrollbarStyle="insideOverlay"
+	        android:scrollbars="vertical"
+	        android:isScrollContainer="true"
+	        android:textSize="16sp">
+	    </TextView>
+	</ScrollView>
+
+    <RelativeLayout
+        android:id="@+id/editView"
+		android:layout_width="fill_parent"
+        android:layout_height="wrap_content"
+        android:layout_alignParentBottom="true"
+        android:layout_alignParentLeft="true">
+
+        <TextView
+	        android:id="@+id/prompt"
+	        android:layout_width="wrap_content"
+	        android:layout_height="wrap_content"
+	        android:layout_alignBaseline="@+id/editTextQuery"
+	        android:layout_alignBottom="@+id/editTextQuery"
+	        android:layout_alignParentLeft="true"
+	        android:text="JIP:-"
+	        android:textSize="16sp"
+	        android:paddingLeft="10dp"
+	        android:paddingRight="10dp" />
+
+	    <AutoCompleteTextView
+	        android:id="@+id/editTextQuery"
+	        android:layout_width="wrap_content"
+	        android:layout_height="60dp"
+
+	        android:layout_toRightOf="@id/prompt"
+	        android:layout_toLeftOf="@+id/imageViewEnter"
+	        android:fadingEdge="vertical"
+	        android:fadingEdgeLength="10dp"
+	        android:hint="Type your query"
+	        android:singleLine="true"
+	        android:textColor="#000"
+	        android:textSize="16sp" >
+
+	    </AutoCompleteTextView>
+
+	    <ImageView
+	        android:id="@+id/imageViewEnter"
+	        android:layout_width="60dp"
+	        android:layout_height="60dp"
+	        android:layout_alignBottom="@+id/editTextQuery"
+	        android:layout_alignParentRight="true"
+	        android:layout_marginBottom="5dp"
+	        android:focusable="true"
+	        android:src="@drawable/ic_action_play_over_video">
+
+	    </ImageView>
+
+
+
+	</RelativeLayout>
+</RelativeLayout>
