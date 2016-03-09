@@ -19,6 +19,7 @@ import com.google.android.gms.ads.AdRequest;
 import com.google.android.gms.ads.AdView;
 import com.ugos.jiprolog.engine.JIPEngine;
 import com.ugos.jiprolog.engine.JIPQuery;
+import com.ugos.jiprolog.engine.JIPRuntimeException;
 import com.ugos.jiprolog.engine.JIPSyntaxErrorException;
 import com.ugos.jiprolog.engine.JIPTerm;
 import com.ugos.jiprolog.engine.JIPVariable;
@@ -109,7 +110,25 @@ public class MainActivity extends Activity {
 		        // check if there is another solution
 		        if(jipQuery.hasMoreChoicePoints())
 		        {
-		        	JIPTerm solution = jipQuery.nextSolution();
+		        	JIPTerm solution = null;
+		        	try
+		        	{
+		        		solution = jipQuery.nextSolution();
+		        	}
+		        	catch(JIPRuntimeException ex)
+		        	{
+		        		outs.println(ex.getMessage());
+				        jipQuery.close();
+				        jipQuery = null;
+				        return;
+		        	}
+		        	catch(Exception ex)
+		        	{
+		        		outs.println(ex.getMessage());
+				        jipQuery.close();
+				        jipQuery = null;
+				        return;
+		        	}
 
 		        	if(solution == null)
 		        	{
